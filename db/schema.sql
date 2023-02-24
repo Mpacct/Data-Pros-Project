@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS calender_db;
-CREATE DATABASE calender_db;
+DROP DATABASE IF EXISTS calendar_db;
+CREATE DATABASE calendar_db;
