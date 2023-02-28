@@ -33,7 +33,7 @@ Event.init(
         user_id : {
             type : DataTypes.INTEGER,
             references : {
-                model : 'user',
+                model : 'users',
                 key: 'id',
             }
         }
@@ -43,7 +43,7 @@ Event.init(
           timestamps: false,
           freezeTableName: true,
           underscored: true,
-          modelName: 'user',
+          modelName: 'events',
     }
 );
  
