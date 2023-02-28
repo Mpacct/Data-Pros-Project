@@ -1,4 +1,8 @@
 /*Cover image*/
+:root {
+    --cool-brown: background-color: #bbb5b0;
+}
+
 body {
     background-image: url('/html/images/background.png');
     background-size: cover;
@@ -11,24 +15,60 @@ body {
 h1 {
     font-family: 'Times New Roman', Times, serif;
     font-weight: lighter;
+    text-align: center;
+}
+
+
+#container {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: lighter;
+    /* display: flex; */
+    /* justify-content: space-around; */
 }
 
 #welcome {
-    background-color: aqua;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 41px;
+    justify-content: left;
+    letter-spacing: .2rem;
+    position: absolute;
+    top: 50%;
+    /*display: inline-block;*/
+    text-align: center;
+    align-items: center;
+    width: 25%;
+    margin-left: 100px;
+    /*left: 50%;*/
+    /*margin-right: 50%;*/
+    /*transform: translate(-50%, -50%);*/
 }
+
 #sign {
     /*padding: 100px 400px;*/
     background-color: rgba(255, 255, 255, 0.5);
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-right: 50%;
-    transform: translate(-50%, -50%) 
+    transform: translate(-50%, -50%);
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: lighter;
+    letter-spacing: .1rem;
+    /* display: inline-block; */
+    align-items: center;
+    width: 25%;
+    margin-left: 400px;
 }
-/*.container {
+
+.container {
     position: absolute;
     top: 50%;
     left: 50%;
     margin-right: 50%;
     transform: translate(-50%, -50%) 
+}
+
+.btn {
+    background-color: #bbb5b0;
+    border: none;
+    letter-spacing: .1rem;
 }
