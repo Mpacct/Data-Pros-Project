@@ -9,7 +9,7 @@ Event.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncriment: true,
+            autoIncrement: true,
         },
         title: {
             type: DataTypes.STRING,
