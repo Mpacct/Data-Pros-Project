@@ -22,34 +22,6 @@ h1 {
 #container {
     font-family: 'Times New Roman', Times, serif;
     font-weight: lighter;
-    /* display: flex; */
-    /* justify-content: space-around; */
-}
-
-#welcome {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 70px;
-    justify-content: left;
-    letter-spacing: .2rem;
-    position: absolute;
-    top: 50%;
-    text-align: right;
-    align-items: center;
-    width: 25%;
-    margin-left: 250px;
-}
-
-h3 {
-    /*font-family: 'Times New Roman', Times, serif;
-    font-size: 50px;
-    justify-content: left;
-    letter-spacing: .2rem;
-    position: absolute;
-    top: 50%;
-    text-align: right;
-    align-items: center;
-    width: 25%;
-    margin-left: 250px;*/
 }
 
 #sign {
@@ -62,8 +34,7 @@ h3 {
     font-weight: lighter;
     letter-spacing: .1rem;
     align-items: center;
-    width: 25%;
-    margin-left: 275px;
+    width: 50%;
 }
 
 .container {
@@ -74,8 +45,16 @@ h3 {
     transform: translate(-50%, -50%) 
 }
 
+.mb-3 {
+    margin: 20px;
+    top: 50%;
+    left: 50%;
+}
 .btn {
     background-color: #bbb5b0;
     border: none;
     letter-spacing: .1rem;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    align-items: center;
 }
