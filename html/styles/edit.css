@@ -1,6 +1,6 @@
 /*Cover image*/
 body {
-    background-image: url('/html/images/background.png');
+    background-image: url('../images/background.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -11,6 +11,7 @@ body {
 h1 {
     font-family: 'Times New Roman', Times, serif;
     font-weight: lighter;
+    text-align: center;
 }
 
 #welcome {
@@ -25,10 +26,7 @@ h1 {
     margin-right: 50%;
     transform: translate(-50%, -50%) 
 }
-/*.container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: 50%;
-    transform: translate(-50%, -50%) 
+
+.trial {
+    min-height: 160px;
 }
