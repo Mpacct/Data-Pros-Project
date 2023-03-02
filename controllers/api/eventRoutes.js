@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Events } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// check the post route once views are complete and we can login/signup
 router.post('/', withAuth, async (req, res) => {
   try {
     const newEvent = await Events.create({
