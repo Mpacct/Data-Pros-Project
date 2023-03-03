@@ -1,14 +1,15 @@
-const LoginHandler = async (event) => {
+const loginHandler = async (event) => {
     event.preventDefault();
 
-    const userEmail = document.getElementById('email');
-    const userPassword = document.getElementById('password');
-
-    if (userEmail && userPassword) 
+    const email = document.querySelector('#email').value.trim();
+    const password = document.querySelector('#password').value.trim();
+    console.log(email)
+    console.log(password)
+    if (email && password) 
     {
         const response = await fetch('/api/users/login', {
             method: 'POST',
-            body: JSON.stringify({ userEmail, userPassword}),
+            body: JSON.stringify({ email, password}),
             headers: {'Content-Type' : 'applicaiton/json'},
         });
 
@@ -26,3 +27,4 @@ const LoginHandler = async (event) => {
          alert('error with user email and password');
     }
 };
+document.querySelector('#loginbtn').addEventListener('click', loginHandler);
