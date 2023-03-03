@@ -6,9 +6,10 @@ const addNew = async (event) => {
     const description = document.querySelector('#description').value.trim();
 
 
+
     if (title && date && time && description) {
-        const response = await fetch('/api/events/', {
-            method: 'POST',
+        const response = await fetch(`/api/events/${eventId}`, {
+            method: 'PUT',
             body: JSON.stringify({ title, date, time, description }),
             headers: { 'Content-Type': 'application/json' },
         });
@@ -20,3 +21,4 @@ const addNew = async (event) => {
     }
 };
 document.querySelector('.btn-primary').addEventListener('click', addNew);
+

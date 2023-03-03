@@ -12,10 +12,10 @@ const signup = async (event) => {
                 body: JSON.stringify({ name, email, password}),
                 headers: { 'Content-Type': 'application/json' },
               });
-        if (response.ok) {
-            document.location.replace('/');
-        } else {
-            alert(response.statusText);
+            if (response.ok) {
+                document.location.replace('/');
+            } else {
+                alert(response.statusText);
             }
         }
     } else {
