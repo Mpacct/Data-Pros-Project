@@ -4,6 +4,7 @@ const withAuth = require('../../utils/auth');
 
 // check the post route once views are complete and we can login/signup
 router.post('/', withAuth, async (req, res) => {
+  console.log(req.body);
   try {
     const newEvent = await Events.create({
       ...req.body,
@@ -13,6 +14,7 @@ router.post('/', withAuth, async (req, res) => {
     res.status(200).json(newEvent);
   } catch (err) {
     res.status(400).json(err);
+    console.log(err);
   }
 });
 
