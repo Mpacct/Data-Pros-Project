@@ -1,1 +1,43 @@
-<h1>This is signup page</h1>
+<div class="container-fluid"> <!--Mobile responsiveness-->
+    <div class="row d-flex justify-content-center" id="container">
+        <div class="col-md-6 col-sm-12" id="sign">
+            <div class="card mx-auto">
+                <h1>Sign Up</h1>
+                <form id="signup-form" method="POST"></form>
+
+                <!--Login Fields-->
+                <div class="mb-3 justify-content-center">
+                    <label for="name" class="form-label">Name</label>
+                    <div><input type="text" class="form-control" id="name" name="name" required></div>
+                </div>
+
+                <div class="mb-3 justify-content-center">
+                    <label for="email" class="form-label">Email</label>
+                    <div><input type="email" class="form-control" id="email" name="email" required></div>
+                </div>
+
+                <div class="mb-3 justify-content-center">
+                    <label for="password" class="form-label">Password</label>
+                    <div><input type="password" class="form-control" id="password" name="password" required></div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="confirm-password" class="form-label">Confirm Password</label>
+                    <div><input type="password" class="form-control" id="confirm-password" name="confirm-password"
+                            required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="signup-template" type="text/x-handlebars-template">
+        <div class="alert alert-success" role="alert">
+          You have successfully signed up, {{name}}!
+        </div>
+      </script>
+<script src="signup.js"></script>
