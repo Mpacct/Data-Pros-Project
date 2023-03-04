@@ -12,7 +12,7 @@
 
 <body>
   <div class="container-fluid"> <!--Mobile responsiveness-->
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-lg-8 col-md-6 col-sm-12" id="sign">
         <div class="card mx-auto">
           <h1>Upcoming Events</h1>
@@ -23,7 +23,40 @@
         </div>
         </form>
       </div>
-    </div>
+    </div> -->
+    <div id="calendar-container">
+      <div id="calendar-header"> 
+          <div id="monthDisplay"></div>
+          <div>
+              <button id="last-month"> Back </button>
+              <button id="next-month"> Next </button>
+          </div>
+      </div>
+          <div id="weekdays">
+              <div>Sunday</div>
+              <div>Monday</div>
+              <div>Tuesday</div>
+              <div>Wednesday</div>
+              <div>Thursday</div>
+              <div>Friday</div>
+              <div>Saturday</div>
+          </div>
+      <div id="calendar"></div>
+  </div>
+  <div id="new-calendar-event">
+    <h2> New Event </h2>
+    <input id="calendar-event-title" placeholder="Event-Title" />
+    <button id="save-event-button"> Save </button>
+    <button id="delete-event-button"> Delete </button>
+  </div>
+  <div id="delete-calendar-event">
+    <h2> Event </h2>
+    <p id="eventText"> </p>
+    <button id="close-button"> Close </button>
+    <button id="delete-button"> Delete </button>
+  </div>
+  </div>
+  <div id="event-calendar-backdrop"></div>
   </div>
 
 
@@ -40,7 +73,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
     integrity="sha512-cmf7hzOyQDXv1Mq+hW/k11GZ7Lof1CCeOw8oWp/qCzI7fZ0S0zG9XSS1Q2HkD+jZch4C4l8J4WjmU6XMJHu6Mw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="calendar.js"></script>
+  <script src="./calendar.js"></script>
 
 </body>
 
