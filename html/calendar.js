@@ -5,6 +5,7 @@ let events = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('e
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const calendar = document.getElementById('calendar');
 const createNewEvent = document.getElementById('new-calendar-event');
+const deleteCalendarEvent = document.getElementById('delete-calendar-event');
 const eventBackground = document.getElementById('event-calendar-backdrop');
 const eventTextInput = document.getElementById('calendar-event-title');
 
@@ -15,7 +16,8 @@ function createEvent(date) {
 
     if (selectedDaysEvents)
     {
-        console.log('already exists')
+        document.getElementById('eventText').innerText = selectedDaysEvents.title;
+        deleteCalendarEvent.style.display = 'block';
     }
     else 
     {
@@ -57,13 +59,22 @@ function calendarLoad() {
     for (let i = 1; i <= VoidDays + daysInMonth; i++) {
         const dayTile = document.createElement('div');
         dayTile.classList.add('day');
+        const dateString = `${month+1}/${i-VoidDays}}/${year}`;
 
         if (i > VoidDays) {
             dayTile.innerText = i - VoidDays;
-
+            const selectedDaysEvents = events.find(event => event.date === dateString);
+           
+            if (selectedDaysEvents)
+            {
+                const eventDiv = document.createElement('div');
+                eventDiv.classList.add('event');
+                eventDiv.innerText = selectedDaysEvents.title;
+                dayTile.appendChild(eventDiv);
+            }
             dayTile.addEventListener('click', function() {
-                createEvent(`${month+1}/${i-VoidDays}}/${year}`);
-            })
+                createEvent(dateString);
+            });
         }
         else {
             dayTile.classList.add('padding');
@@ -73,11 +84,36 @@ function calendarLoad() {
 }
 
 function closeEvent () {
+    eventTextInput.classList.remove('error');
     createNewEvent.style.display = 'none';
+    deleteCalendarEvent.style.display = 'none';
     eventBackground.style.display = 'none';
     eventTextInput.value='';
     selectedDay = null;
     calendarLoad();
+}
+
+function saveEvent() {
+    if (eventTextInput.value) 
+    {
+        eventTextInput.classList.remove('error');
+        events.push({
+            date: selectedDay,
+            title: eventTextInput.value,
+        });
+        localStorage.setItem('events', JSON.stringify(events));
+        closeEvent();
+    }
+    else 
+    {
+        eventTextInput.classList.add('error');
+    }
+}
+
+function deleteEvent () {
+    events = events.filter(e => e.date !== selectedDay);
+    localStorage.setItem('events', JSON.stringify(events));
+    closeEvent();
 }
 
 function InitializeButton() {
@@ -92,8 +128,11 @@ function InitializeButton() {
         calendarLoad();
     });
 
-    document.getElementById('save-event-button').addEventListener('click',)
+    document.getElementById('save-event-button').addEventListener('click', saveEvent);
     document.getElementById('delete-event-button').addEventListener('click', closeEvent);
+
+    document.getElementById('delete-button').addEventListener('click', deleteEvent)
+    document.getElementById('close-button').addEventListener('click', closeEvent);
 };
 
 InitializeButton();
