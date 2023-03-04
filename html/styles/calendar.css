@@ -89,7 +89,7 @@ button {
     background-color: white !important;
     box-shadow: none !important;
   }
-  #new-calendar-event, #deleteEventModal {
+  #new-calendar-event, #delete-calendar-event {
     display: none;
     z-index: 20;
     padding: 25px;
@@ -115,10 +115,10 @@ button {
   #eventTitleInput.error {
     border: 2px solid red;
   }
-  #delete-event-button, #deleteButton {
+  #delete-event-button, #delete-button {
     background-color: #d36c6c;
   }
-  #save-event-button, #closeButton {
+  #save-event-button, #close-button {
     background-color: #92a1d1;
   }
   #eventText {
