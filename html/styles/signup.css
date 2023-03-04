@@ -49,6 +49,12 @@ h1 {
     margin: 20px;
     top: 50%;
     left: 50%;
+    width: 100%;
+}
+
+button {
+    align-items: center;
+    margin-left: 47%;
 }
 .btn {
     background-color: #bbb5b0;
@@ -56,5 +62,13 @@ h1 {
     letter-spacing: .1rem;
     font-family: 'Times New Roman', Times, serif;
     color: white;
+    display: flex;
+    justify-content: center;
     align-items: center;
+}
+
+.form-control {
+    width: 70%;
+    border: none;
+    height: 30px;
 }
