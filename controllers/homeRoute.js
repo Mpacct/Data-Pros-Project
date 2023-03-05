@@ -13,8 +13,9 @@ router.get('/', withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
-
+    let css = ['style.css']
     res.render('homepage', {
+      css,
       ...user,
       logged_in: true
     });
@@ -29,7 +30,8 @@ router.get('/login', (req, res) => {
     res.redirect('/');
     return;
   }
-  res.render('login');
+  let css = ['login.css']
+  res.render('login', { css });
 });
 
 router.get('/signup', (req, res) => {
@@ -37,7 +39,8 @@ router.get('/signup', (req, res) => {
     res.redirect('/');
     return;
   }
-  res.render('signup');
+  let css = ['signup.css']
+  res.render('signup', { css });
 });
 
 router.get('/addevent', (req, res) => {
@@ -45,7 +48,8 @@ router.get('/addevent', (req, res) => {
     res.redirect('/login');
     return;
   }
-  res.render('addevent');
+  let css = ['add.css']
+  res.render('addevent', { css });
 });
 
 router.get('/updateevent', (req, res) => {
@@ -53,13 +57,20 @@ router.get('/updateevent', (req, res) => {
     res.redirect('/login');
     return;
   }
-  res.render('updateevent');
+  let css = ['edit.css']
+  res.render('updateevent', { css });
 });
 
 
 router.get('/test', (req, res) => {
   // Get all books from the book table
-  Events.findAll().then((eventData) => {
+  Events.findAll(
+    {
+      where: (
+        req.session.user_id = userData.id
+      )
+    }
+  ).then((eventData) => {
     res.json(eventData);
   });
 });
