@@ -59,7 +59,13 @@ router.get('/updateevent', (req, res) => {
 
 router.get('/test', (req, res) => {
   // Get all books from the book table
-  Events.findAll().then((eventData) => {
+  Events.findAll(
+    {
+      where: (
+        req.session.user_id = userData.id
+      )
+    }
+  ).then((eventData) => {
     res.json(eventData);
   });
 });
