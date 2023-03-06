@@ -13,36 +13,37 @@ const eventTextInput = document.getElementById('calendar-event-title');
 function even () {
     fetch('/test', {
         method: 'GET',
-        headers: {'Content-Type': 'application/json'}
+        credentials: 'same-origin',
+        redirect: 'follow',
     })
     .then(function (response){
-        console.log(response.json())
         return response.json();
     })
-    .then(function (events){
-    })
-    .then(function (events){
-        console.log(events.events)
-        InitializeButton(events);
+    .then(function (data){
+        console.log(data)
+        console.log(data.events)
+        InitializeButton(data.events);
 
-        calendarLoad(events);
+        calendarLoad(data.events);
     })
    
 }
 
 
-function createEvent(date) {
+function createEvent(date, events) {
     selectedDay = date;
-
+    console.log(selectedDay)
     const selectedDaysEvents = events.find(event => event.date === selectedDay);
 
     if (selectedDaysEvents)
     {
+        console.log(selectedDay + 'adding event')
         document.getElementById('eventText').innerText = selectedDaysEvents.title;
         deleteCalendarEvent.style.display = 'block';
     }
     else 
     {
+        console.log(selectedDay + 'no event')
         createNewEvent.style.display='block';
 
     }
@@ -81,11 +82,11 @@ function calendarLoad(events) {
     for (let i = 1; i <= VoidDays + daysInMonth; i++) {
         const dayTile = document.createElement('div');
         dayTile.classList.add('day');
-        const dateString = `${month+1}/${i-VoidDays}}/${year}`;
+        const dateString = `${year}-${month+1}-${i-VoidDays}`;
 
         if (i > VoidDays) {
             dayTile.innerText = i - VoidDays;
-            const selectedDaysEvents = events.find(event => event.date === dateString);
+            const selectedDaysEvents = events.find(events => events.date === dateString);
            
             if (selectedDaysEvents)
             {
@@ -95,7 +96,7 @@ function calendarLoad(events) {
                 dayTile.appendChild(eventDiv);
             }
             dayTile.addEventListener('click', function() {
-                createEvent(dateString);
+                createEvent(dateString, events);
             });
         }
         else {
