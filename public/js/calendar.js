@@ -20,8 +20,6 @@ function even () {
         return response.json();
     })
     .then(function (data){
-        console.log(data)
-        console.log(data.events)
         InitializeButton(data.events);
 
         calendarLoad(data.events);
@@ -82,12 +80,13 @@ function calendarLoad(events) {
     for (let i = 1; i <= VoidDays + daysInMonth; i++) {
         const dayTile = document.createElement('div');
         dayTile.classList.add('day');
-        const dateString = `${year}-${month+1}-${i-VoidDays}`;
+        const dateString = `${year}-${ifmonth+1}-${i-VoidDays}`;
+
 
         if (i > VoidDays) {
             dayTile.innerText = i - VoidDays;
-            const selectedDaysEvents = events.find(events => events.date === dateString);
-           
+            var selectedDaysEvents = events.find(events => events.date === dateString);
+            
             if (selectedDaysEvents)
             {
                 const eventDiv = document.createElement('div');
