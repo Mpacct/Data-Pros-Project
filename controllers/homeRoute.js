@@ -13,7 +13,7 @@ router.get('/', withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
-    let css = ['style.css']
+    let css = ['calendar.css']
     res.render('homepage', {
       css,
       ...user,
@@ -62,17 +62,18 @@ router.get('/updateevent', (req, res) => {
 });
 
 
-router.get('/test', (req, res) => {
-  // Get all books from the book table
-  Events.findAll(
-    {
-      where: (
-        req.session.user_id = userData.id
-      )
-    }
-  ).then((eventData) => {
-    res.json(eventData);
-  });
+router.get('/test', async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const userData = await Users.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Events }], 
+    });
+    
+    res.json(userData)
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;
