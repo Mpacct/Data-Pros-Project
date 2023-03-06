@@ -20,14 +20,28 @@ function even () {
         return response.json();
     })
     .then(function (data){
-        console.log(data)
-        console.log(data.events)
         InitializeButton(data.events);
 
         calendarLoad(data.events);
     })
    
 }
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) {
+        month = '0' + month;
+    }
+    if (day.length < 2) { 
+        day = '0' + day;
+    }
+    return [year, month, day].join('-');
+}
+
 
 
 function createEvent(date, events) {
@@ -37,13 +51,13 @@ function createEvent(date, events) {
 
     if (selectedDaysEvents)
     {
-        console.log(selectedDay + 'adding event')
+        console.log('adding event')
         document.getElementById('eventText').innerText = selectedDaysEvents.title;
         deleteCalendarEvent.style.display = 'block';
     }
     else 
     {
-        console.log(selectedDay + 'no event')
+        console.log('no event')
         createNewEvent.style.display='block';
 
     }
@@ -83,11 +97,14 @@ function calendarLoad(events) {
         const dayTile = document.createElement('div');
         dayTile.classList.add('day');
         const dateString = `${year}-${month+1}-${i-VoidDays}`;
+        const newDateString = formatDate(dateString);
+
 
         if (i > VoidDays) {
             dayTile.innerText = i - VoidDays;
-            const selectedDaysEvents = events.find(events => events.date === dateString);
-           
+            console.log(newDateString)
+            var selectedDaysEvents = events.find(events => events.date == newDateString);
+            
             if (selectedDaysEvents)
             {
                 const eventDiv = document.createElement('div');
@@ -96,7 +113,7 @@ function calendarLoad(events) {
                 dayTile.appendChild(eventDiv);
             }
             dayTile.addEventListener('click', function() {
-                createEvent(dateString, events);
+                createEvent(newDateString, events);
             });
         }
         else {
@@ -113,7 +130,7 @@ function closeEvent () {
     eventBackground.style.display = 'none';
     eventTextInput.value='';
     selectedDay = null;
-    calendarLoad();
+    even();
 }
 
 // function saveEvent() {
@@ -160,5 +177,5 @@ function InitializeButton(events) {
 
 // InitializeButton();
 
-// calendarLoad();
+//calendarLoad();
 even();
