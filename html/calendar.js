@@ -1,6 +1,6 @@
 let monthTracker = 0;
 let selectedDay = null;
-let events = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events')) : [];
+// let events = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events')) : [];
 
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const calendar = document.getElementById('calendar');
@@ -9,10 +9,20 @@ const deleteCalendarEvent = document.getElementById('delete-calendar-event');
 const eventBackground = document.getElementById('event-calendar-backdrop');
 const eventTextInput = document.getElementById('calendar-event-title');
 
+function events () {
+    fetch('/test', {
+        method: 'GET',
+        redirect: 'follow',
+})
+  .then(function (response) {
+    return response.json();
+  })
+}
+
 function createEvent(date) {
     selectedDay = date;
 
-    const selectedDaysEvents = events.find(event => event.date === selectedDay);
+    const selectedDaysEvents = events().events.find(event => event.date === selectedDay);
 
     if (selectedDaysEvents)
     {
@@ -63,7 +73,7 @@ function calendarLoad() {
 
         if (i > VoidDays) {
             dayTile.innerText = i - VoidDays;
-            const selectedDaysEvents = events.find(event => event.date === dateString);
+            const selectedDaysEvents = events().events.find(event => event.date === dateString);
            
             if (selectedDaysEvents)
             {
