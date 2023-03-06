@@ -1,54 +1,42 @@
-<div class="container-fluid"> <!--Mobile responsiveness-->
-    <div class="row">
-      <div class="col-lg-8 col-md-6 col-sm-12" id="sign">
-        <div id="listevents" class="card mx-auto">
-          <h1>Upcoming Events</h1>
-        </div>
-        <div class="d-flex justify-content-center">
-          <button type="button" class="btn btn-secondary"onClick="parent.open('/addevent')">Add Event</button>
-        </div>
-        </form>
-      </div>
+<div id="calendar-container">
+  <div id="calendar-header">
+    <div id="monthDisplay"></div>
+    <div>
+      <button id="last-month"> Back </button>
+      <button id="next-month"> Next </button>
     </div>
-    {{!-- <div id="calendar-container">
-      <div id="calendar-header"> 
-          <div id="monthDisplay"></div>
-          <div>
-              <button id="last-month"> Back </button>
-              <button id="next-month"> Next </button>
-          </div>
-      </div>
-          <div id="weekdays">
-              <div>Sunday</div>
-              <div>Monday</div>
-              <div>Tuesday</div>
-              <div>Wednesday</div>
-              <div>Thursday</div>
-              <div>Friday</div>
-              <div>Saturday</div>
-          </div>
-      <div id="calendar"></div>
   </div>
-  <div id="new-calendar-event">
-    <h2> New Event </h2>
-    <input id="calendar-event-title" placeholder="Event-Title" />
-    <button id="save-event-button"> Save </button>
-    <button id="delete-event-button"> Delete </button>
+  <div id="weekdays">
+    <div>Sunday</div>
+    <div>Monday</div>
+    <div>Tuesday</div>
+    <div>Wednesday</div>
+    <div>Thursday</div>
+    <div>Friday</div>
+    <div>Saturday</div>
   </div>
-  <div id="delete-calendar-event">
-    <h2> Event </h2>
-    <p id="eventText"> </p>
-    <button id="close-button"> Close </button>
-    <button id="delete-button"> Delete </button>
-  </div>
-  </div>
-  <div id="event-calendar-backdrop"></div>
-  </div>
-<button type="button" class="btn btn-secondary">Add Event</button>
+  <div id="calendar"></div>
+</div>
+<div id="new-calendar-event">
+  <h2> New Event </h2>
+  <input id="calendar-event-title" placeholder="Event-Title" />
+  <button id="save-event-button"> Save </button>
+  <button id="delete-event-button"> Delete </button>
+</div>
+<div id="delete-calendar-event">
+  <h2> Event </h2>
+  <p id="eventText"> </p>
+  <button id="close-button"> Close </button>
+  <button id="delete-button"> Delete </button>
+</div>
+</div>
+<div id="event-calendar-backdrop"></div>
+</div>
+<button type="button" class="btn btn-secondary" onClick="parent.open('/addevent')">Add Event</button>
 
-  <script id="signup-template" type="text/x-handlebars-template">
+<script id="signup-template" type="text/x-handlebars-template">
       <div class="alert alert-success" role="alert">
         You have successfully signed up, {{name}}!
       </div>
-    </script> --}}
-<script src="./js/test.js"></script>
+    </script>
+<script src="./js/calendar.js"></script>

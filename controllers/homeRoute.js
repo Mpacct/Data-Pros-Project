@@ -13,7 +13,7 @@ router.get('/', withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
-    let css = ['style.css']
+    let css = ['calendar.css']
     res.render('homepage', {
       css,
       ...user,
