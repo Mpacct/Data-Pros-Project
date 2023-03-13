@@ -1,3 +1,4 @@
+//connects the server with the routes, helper functions, and node modules
 const path = require('path');
 const express = require('express');
 const session = require('express-session');

@@ -1,3 +1,4 @@
+//function to add a new event based on user inputted values from the form.  Saves to the database events table
 const addNew = async (event) => {
     event.preventDefault();
     const title = document.querySelector('#title').value.trim();

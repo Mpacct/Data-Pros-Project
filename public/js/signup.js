@@ -1,3 +1,4 @@
+//runs the signup route
 const signup = async (event) => {
     event.preventDefault();
     const name = document.querySelector('#name').value.trim();

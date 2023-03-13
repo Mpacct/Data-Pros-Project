@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Event extends Model {} 
-
+// model for the events table in the database with id as the PK and user_id as the FK
 Event.init(
     {
         id: {

@@ -1,6 +1,7 @@
+//connects express and users model to the user routes
 const router = require('express').Router();
 const { Users } = require('../../models');
-
+// post route to save signup data to the database
 router.post('/signup', async (req, res) => {
   try {
     const userData = await Users.create(req.body);
@@ -15,7 +16,7 @@ router.post('/signup', async (req, res) => {
     res.status(400).json(err);
   }
 });
-
+// post route to send password information to check if it was the correct password and logs in the u ser if it was
 router.post('/login', async (req, res) => {
   console.log(req.body)
   try {
@@ -38,7 +39,7 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
-
+// sets userdata.id to equal session.userid
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
@@ -51,7 +52,7 @@ router.post('/login', async (req, res) => {
     console.log(err)
   }
 });
-
+// logout route to end the logged in session and set the logged_in status to false
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {

@@ -17,9 +17,10 @@ router.post('/', withAuth, async (req, res) => {
     console.log(err);
   }
 });
-
+// delete route to delete an event based off of an id (for future development)
 router.delete('/:id', withAuth, async (req, res) => {
   try {
+    // paramaters where id has to equal session id
     const eventData = await Events.destroy({
         where: {
             id: req.params.id,
@@ -37,7 +38,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+// route to update an event based off of an id with fields for title, description, date, and time
 router.put('/:id', withAuth, async (req, res) => {
     try {
         const eventData = await Events.update(

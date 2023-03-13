@@ -1,3 +1,4 @@
+// template to display user data in a list format
 var info = document.querySelector("#listevents")
 
 function even () {

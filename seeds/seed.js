@@ -1,3 +1,4 @@
+// connects seeds files
 const seedUsers = require('./user-seeds');
 const seedEvents = require('./event-seeds');
 const sequelize = require('../config/connection');
