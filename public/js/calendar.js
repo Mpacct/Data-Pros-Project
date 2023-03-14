@@ -9,7 +9,7 @@ const createNewEvent = document.getElementById('new-calendar-event');
 const deleteCalendarEvent = document.getElementById('delete-calendar-event');
 const eventBackground = document.getElementById('event-calendar-backdrop');
 const eventTextInput = document.getElementById('calendar-event-title');
-
+// runs the get request to access data from the table in the database
 function even () {
     fetch('/test', {
         method: 'GET',
@@ -26,7 +26,7 @@ function even () {
     })
    
 }
-
+// formats date correctly to sync to calendar
 function formatDate(date) {
     var d = new Date(date),
         month = '' + (d.getMonth() + 1),
@@ -43,7 +43,7 @@ function formatDate(date) {
 }
 
 
-
+// creates an event on the calendar based off of inputted data
 function createEvent(date, events) {
     selectedDay = date;
     console.log(selectedDay)
@@ -64,7 +64,7 @@ function createEvent(date, events) {
 
     eventBackground.style.display ='block';
 }
-
+// loads events from the database and gives the calendar data to access
 function calendarLoad(events) {
     const date = new Date();
 
@@ -122,7 +122,7 @@ function calendarLoad(events) {
         calendar.appendChild(dayTile);
     }
 }
-
+// deletes an event on the calendar (for future development)
 function closeEvent () {
     eventTextInput.classList.remove('error');
     createNewEvent.style.display = 'none';
@@ -156,6 +156,7 @@ function closeEvent () {
 //     closeEvent();
 // }
 
+// loads the calendar on refresh based off of the data
 function InitializeButton(events) {
     const nextButton = document.getElementById('next-month');
     nextButton.addEventListener('click', function() {

@@ -1,3 +1,4 @@
+// handles the login and runs the login route that sets user status to logged_in if they entered the correct email and password
 const loginHandler = async (event) => {
     event.preventDefault();
 

@@ -1,3 +1,4 @@
+// connects routes to express, the auth to verify they are logged in, and with both models
 const router = require('express').Router();
 const { Events, Users } = require('../models');
 const withAuth = require('../utils/auth');
@@ -33,7 +34,7 @@ router.get('/login', (req, res) => {
   let css = ['login.css']
   res.render('login', { css });
 });
-
+// signup route that redurects them to the homepage if they are logged in
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/');
@@ -42,7 +43,7 @@ router.get('/signup', (req, res) => {
   let css = ['signup.css']
   res.render('signup', { css });
 });
-
+// sends user to the add event page if they are logged in
 router.get('/addevent', (req, res) => {
   if (!req.session.logged_in) {
     res.redirect('/login');
@@ -51,7 +52,7 @@ router.get('/addevent', (req, res) => {
   let css = ['add.css']
   res.render('addevent', { css });
 });
-
+// sends user to the update event page if they are logged in (for future development)
 router.get('/updateevent', (req, res) => {
   if (!req.session.logged_in) {
     res.redirect('/login');
@@ -61,7 +62,7 @@ router.get('/updateevent', (req, res) => {
   res.render('updateevent', { css });
 });
 
-
+// route to display events that are tied to a users session_id
 router.get('/test', async (req, res) => {
   try {
     // Find the logged in user based on the session ID

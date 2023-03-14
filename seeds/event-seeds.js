@@ -1,3 +1,4 @@
+//seed data for the events table
 const { Events } = require('../models');
 
 const eventsData = [

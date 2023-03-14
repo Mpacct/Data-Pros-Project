@@ -1,3 +1,4 @@
+// sets relationships between tables
 const Users = require('./User');
 const Events = require('./Events');
 

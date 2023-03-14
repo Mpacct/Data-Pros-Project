@@ -1,3 +1,4 @@
+//function to edit an event with a put route
 const addNew = async (event) => {
     event.preventDefault();
     const title = document.querySelector('#title').value.trim();
